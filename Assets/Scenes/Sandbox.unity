@@ -527,14 +527,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6851436, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
-      propertyPath: m_Drag
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6851436, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
-      propertyPath: m_Constraints
-      value: 56
-      objectReference: {fileID: 0}
+    - target: {fileID: 6851431, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 5067804480025127876}
     - target: {fileID: 5067804478486064194, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
       propertyPath: m_Name
       value: Rocket
@@ -583,8 +579,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5067804480025127876, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067804480025127876, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e6cf64a356590f4d8b0a161877f5e78, type: 3}
+    - target: {fileID: 5067804480025127876, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
+--- !u!82 &5067804480025127876 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5067804480025127876, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
+  m_PrefabInstance: {fileID: 5067804480025127874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7143645921990026767
 PrefabInstance:
   m_ObjectHideFlags: 0
