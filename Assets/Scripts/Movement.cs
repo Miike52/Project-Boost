@@ -35,6 +35,7 @@ public class Movement : MonoBehaviour
             {
                 audioSource.Play();
             }
+
         }
         else
         {
