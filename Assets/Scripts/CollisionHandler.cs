@@ -4,9 +4,19 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float loadDelay = 1.5f;
+    [SerializeField] AudioClip crashSFX;
+    [SerializeField] AudioClip successSFX;
+
+    AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();      
+    }
 
     void OnCollisionEnter(Collision collision)
     {
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
@@ -27,7 +37,9 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
-        // todo: add SFX upon crash
+        // todo: add SFX upon crash                 
+        audioSource.PlayOneShot(crashSFX, 0.7f);
+        
         // todo: add particle effect upon crash
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", loadDelay);
@@ -36,8 +48,10 @@ public class CollisionHandler : MonoBehaviour
     void StartFinishSequence()
     {
         // todo: add SFX upon finish
+        audioSource.PlayOneShot(successSFX);      
+
         // todo: add particle effect upon finish
-        GetComponent<Movement>().enabled = true;
+        GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", loadDelay); // better to use a coroutine instead later on
     }
 
