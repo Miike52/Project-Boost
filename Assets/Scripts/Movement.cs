@@ -9,6 +9,10 @@ public class Movement : MonoBehaviour
     [SerializeField] float rotationThrust = 50f;
     [SerializeField] AudioClip mainThrustSFX;
 
+    [SerializeField] ParticleSystem mainThrustParticles;
+    [SerializeField] ParticleSystem leftThrustParticles;
+    [SerializeField] ParticleSystem rightThrustParticles;
+
     Rigidbody rocketRigidbody;
     AudioSource audioSource;
 
@@ -37,11 +41,16 @@ public class Movement : MonoBehaviour
             {
                 audioSource.PlayOneShot(mainThrustSFX);
             }
+            if (!mainThrustParticles.isPlaying) 
+            {
+                mainThrustParticles.Play();
+            }
 
         }
         else
         {
             audioSource.Stop();
+            mainThrustParticles.Stop();
         }
     }
 
@@ -51,12 +60,27 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Pressed A - Rotating Left");
             ApplyRotation(rotationThrust);
+            if (!rightThrustParticles.isPlaying)
+            {
+                leftThrustParticles.Stop();
+                rightThrustParticles.Play();
+            }
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("Pressed D - Rotating Right");
+            Debug.Log("Pressed D - Rotating Right");            
             ApplyRotation(-rotationThrust);
+            if (!leftThrustParticles.isPlaying)
+            {
+                rightThrustParticles.Stop();
+                leftThrustParticles.Play();
+            }
 
+        }
+        else
+        {
+            leftThrustParticles.Stop();
+            rightThrustParticles.Stop();
         }
     }
 

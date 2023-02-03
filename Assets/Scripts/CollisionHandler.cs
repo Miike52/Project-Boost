@@ -7,15 +7,21 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] AudioClip crashSFX;
     [SerializeField] AudioClip successSFX;
 
+    [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] ParticleSystem successParticles;
+
     AudioSource audioSource;
+
+    bool isTransitioning = false;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();      
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        if (isTransitioning) { return; }
 
         switch (collision.gameObject.tag)
         {
@@ -34,25 +40,28 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-
     void StartCrashSequence()
     {
-        // todo: add SFX upon crash                 
+        isTransitioning = true;
+        audioSource.Stop();
         audioSource.PlayOneShot(crashSFX, 0.7f);
-        
-        // todo: add particle effect upon crash
+        crashParticles.Play();
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", loadDelay);
+
+        // todo: add particle effect upon crash       
     }
 
     void StartFinishSequence()
     {
-        // todo: add SFX upon finish
-        audioSource.PlayOneShot(successSFX);      
-
+        isTransitioning = true;
+        audioSource.Stop();
+        audioSource.PlayOneShot(successSFX);
+        successParticles.Play();
         // todo: add particle effect upon finish
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", loadDelay); // better to use a coroutine instead later on
+
     }
 
     void LoadNextLevel()

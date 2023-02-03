@@ -624,33 +624,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 719141149941586772, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
-      propertyPath: loadDelay
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5067804478486064194, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
       propertyPath: m_Name
       value: Rocket
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067804478486064194, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067804478486064195, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
-      propertyPath: m_Size.x
-      value: 1.1081772
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067804478486064195, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
-      propertyPath: m_Size.y
-      value: 1.047415
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067804478486064195, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
-      propertyPath: m_Center.x
-      value: -0.012950897
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067804478486064195, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
-      propertyPath: m_Center.y
-      value: -0.0051833154
       objectReference: {fileID: 0}
     - target: {fileID: 5067804478486064198, guid: 080f6ed6c0881ae4cbb2c1a447011e27, type: 3}
       propertyPath: m_RootOrder
