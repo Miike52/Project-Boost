@@ -29,28 +29,16 @@ public class Movement : MonoBehaviour
         ProcessThrust();
         ProcessRotation();
     }
-
     void ProcessThrust()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            Debug.Log("Pressed SPACE - Thrusting.");
-            rocketRigidbody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(mainThrustSFX);
-            }
-            if (!mainThrustParticles.isPlaying) 
-            {
-                mainThrustParticles.Play();
-            }
+            StartThrusting();
 
         }
         else
         {
-            audioSource.Stop();
-            mainThrustParticles.Stop();
+            StopThrusting();
         }
     }
 
@@ -58,23 +46,11 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            Debug.Log("Pressed A - Rotating Left");
-            ApplyRotation(rotationThrust);
-            if (!rightThrustParticles.isPlaying)
-            {
-                leftThrustParticles.Stop();
-                rightThrustParticles.Play();
-            }
+            RotateLeft();
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            Debug.Log("Pressed D - Rotating Right");            
-            ApplyRotation(-rotationThrust);
-            if (!leftThrustParticles.isPlaying)
-            {
-                rightThrustParticles.Stop();
-                leftThrustParticles.Play();
-            }
+            RotateRight();
 
         }
         else
@@ -84,6 +60,47 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void StartThrusting()
+    {
+        Debug.Log("Pressed SPACE - Thrusting.");
+        rocketRigidbody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(mainThrustSFX);
+        }
+        if (!mainThrustParticles.isPlaying)
+        {
+            mainThrustParticles.Play();
+        }
+    }
+
+    void StopThrusting()
+    {
+        audioSource.Stop();
+        mainThrustParticles.Stop();
+    }
+    void RotateLeft()
+    {
+        Debug.Log("Pressed A - Rotating Left");
+        ApplyRotation(rotationThrust);
+        if (!rightThrustParticles.isPlaying)
+        {
+            leftThrustParticles.Stop();
+            rightThrustParticles.Play();
+        }
+    }
+
+    void RotateRight()
+    {
+        Debug.Log("Pressed D - Rotating Right");
+        ApplyRotation(-rotationThrust);
+        if (!leftThrustParticles.isPlaying)
+        {
+            rightThrustParticles.Stop();
+            leftThrustParticles.Play();
+        }
+    }
 
     void ApplyRotation(float rotationThisFrame)
     {
