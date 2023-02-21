@@ -13,15 +13,21 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
 
     bool isTransitioning = false;
+    bool collisionDisabled = false;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        DebugCheatKeys();
+    }
+
     void OnCollisionEnter(Collision collision)
     {
-        if (isTransitioning) { return; }
+        if (isTransitioning || collisionDisabled) { return; }
 
         switch (collision.gameObject.tag)
         {
@@ -62,6 +68,19 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", loadDelay); // better to use a coroutine instead later on
 
+    }
+    void DebugCheatKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("Cheat activated - disabling collisions!");
+            collisionDisabled = !collisionDisabled;
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("Cheat activated - loading next level!");
+            LoadNextLevel();
+        }
     }
 
     void LoadNextLevel()

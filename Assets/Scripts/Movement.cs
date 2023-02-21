@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class Movement : MonoBehaviour
         ProcessThrust();
         ProcessRotation();
     }
+
     void ProcessThrust()
     {
         if (Input.GetKey(KeyCode.Space))
@@ -55,8 +57,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            leftThrustParticles.Stop();
-            rightThrustParticles.Stop();
+            StopRotating();
         }
     }
 
@@ -100,6 +101,12 @@ public class Movement : MonoBehaviour
             rightThrustParticles.Stop();
             leftThrustParticles.Play();
         }
+    }
+
+    void StopRotating()
+    {
+        leftThrustParticles.Stop();
+        rightThrustParticles.Stop();
     }
 
     void ApplyRotation(float rotationThisFrame)
